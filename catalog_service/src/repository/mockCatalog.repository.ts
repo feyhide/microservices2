@@ -1,7 +1,7 @@
 import { ICatalogRepository } from "../interface/catalogRepo.interface";
 import { Product } from "../models/product.model";
 
-export class CatalogRepository implements ICatalogRepository {
+export class MockCatalogRepository implements ICatalogRepository {
     create(data: Product): Promise<Product> {
         throw new Error("Method not implemented.");
     }
