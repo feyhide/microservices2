@@ -13,7 +13,9 @@ const config: Config = {
   coverageDirectory: "coverage",
   coverageProvider: "v8",
   moduleDirectories:['node_modules',"src"],
-  coveragePathIgnorePatterns:['/node_modules']
+  coveragePathIgnorePatterns:['/node_modules'],
+  testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)']
+
 };
 
 export default config;
