@@ -17,19 +17,29 @@ export class CatalogService{
         return data
     }
 
-    updateProduct(input:any){
-
+    async updateProduct(input:any){
+        const data = await this._repository.update(input)
+        //emit event to update record in Elastic Search
+        return data
     }
 
-    fetchProducts(limit:number,offset:number){
-
+    //instead of this we will get product from elastic search
+    async fetchProducts(limit:number,offset:number){
+        const products = await this._repository.find(limit,offset)
+        return products
     }
 
-    fetchProduct(id:number){
-
+    async fetchProduct(id:number){
+        const product = await this._repository.findOne(id)
+        return product
     }
 
-    deleteProduct(id:number){
-
+    async deleteProduct(id:number){
+        const response = await this._repository.delete(id)
+        if(!response.id){
+            throw new Error("unable to create products")
+        }
+        //delete by elastic search
+        return response
     }
 }
